@@ -1,91 +1,91 @@
 # 🏥 AI Medical Report Analyzer
 
-Bu proje, Kaggle üzerindeki "Medical Transcriptions" veri setini kullanarak tıbbi raporlardan yapısal veriler ve içgörüler (insights) çıkarmayı amaçlayan bir **Eğitim ve Analiz Aracıdır**.
+This project is an **Educational and Analysis Tool** designed to extract structural data and insights from medical reports using the "Medical Transcriptions" dataset from Kaggle.
 
-Hiçbir teşhis koymaz (Non-diagnostic). Sadece metin madenciliği (Text Mining) ve doğal dil işleme (NLP) yöntemlerini öğretmek amacıyla geliştirilmiştir.
+It is **non-diagnostic**. Is developed solely to demonstrate Text Mining and Natural Language Processing (NLP) techniques.
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
 ![Streamlit](https://img.shields.io/badge/Streamlit-App-red)
 
-## 🚀 Özellikler
+## 🚀 Features
 
-1.  **Bölüm Ayrıştırma (Section Parsing):**
-    *   Rapor metnini klasik başlıklarına ayırır (örn. `HISTORY`, `MEDICATIONS`, `PLAN`).
-    *   Regex kullanarak düzensiz metinleri yapılandırır.
-2.  **İstatistiksel Analiz:**
-    *   Kelime ve cümle sayıları.
-    *   Tahmini okuma süresi hesaplama.
-3.  **Anahtar Kelime Çıkarımı (Keyword Extraction):**
-    *   Etkisiz kelimeleri (Stopwords) temizleyerek en sık geçen tıbbi terimleri bulur.
-4.  **İnteraktif Arayüz (Streamlit):**
-    *   Hem tekil raporları analiz etmek hem de toplu veri setini görselleştirmek için web arayüzü sunar.
+1.  **Section Parsing:**
+    *   Splits report text into standard medical sections (e.g., `HISTORY`, `MEDICATIONS`, `PLAN`).
+    *   Uses Regex to structure irregular and messy text formats.
+2.  **Statistical Analysis:**
+    *   Calculates word and sentence counts.
+    *   Estimates reading time.
+3.  **Keyword Extraction:**
+    *   Identifies the most frequent medical terms by removing stopwords.
+4.  **Interactive Interface (Streamlit):**
+    *   Provides a web interface for analyzing single reports and visualizing findings from the entire dataset.
 
 ---
 
-## 🛠 Kurulum
+## 🛠 Installation
 
-1.  **Repo'yu Klonlayın:**
+1.  **Clone the Repository:**
     ```bash
     git clone https://github.com/umuterenakbass/ai-medical-report-analyzer.git
     cd ai-medical-report-analyzer
     ```
 
-2.  **Sanal Ortam Oluşturun (Önerilen):**
+2.  **Create a Virtual Environment (Recommended):**
     ```bash
     python -m venv .venv
     source .venv/bin/activate  # Mac/Linux
     # .venv\Scripts\activate   # Windows
     ```
 
-3.  **Gerekli Kütüphaneleri Yükleyin:**
+3.  **Install Required Libraries:**
     ```bash
     pip install pandas tqdm streamlit matplotlib
     ```
 
 ---
 
-## 🖥 Kullanım
+## 🖥 Usage
 
-### 1. Veri İnceleme (CLI)
-Rastgele bir raporu terminalde analiz etmek için:
+### 1. Data Inspection (CLI)
+To analyze a random report in the terminal:
 ```bash
 python src/inspect_data.py
 ```
 
-### 2. Toplu Analiz (CLI)
-Tüm `mtsamples.csv` dosyasını işleyip sonuçları dışarı aktarmak için:
+### 2. Batch Analysis (CLI)
+To process the entire `mtsamples.csv` file and export results:
 ```bash
 python src/main.py mtsamples.csv results.jsonl
-# Test için limit koyabilirsiniz:
+# You can set a limit for testing:
 python src/main.py mtsamples.csv results.jsonl --limit 100
 ```
 
-### 3. Web Arayüzü (Streamlit)
-Analiz aracını tarayıcıda görsel olarak kullanmak için:
+### 3. Web Interface (Streamlit)
+To use the visual analysis tool in your browser:
 ```bash
 streamlit run src/app.py
 ```
-*(Tarayıcınızda otomatik olarak açılacaktır)*
+*(It will open automatically in your browser)*
 
 ---
 
-## 📂 Proje Yapısı
+## 📂 Project Structure
 
 ```
 ai-medical-report-analyzer/
-├── mtsamples.csv        # Kaggle Veri Seti (Raw Data)
-├── results.jsonl        # Analiz Sonuçları (Output)
+├── mtsamples.csv        # Kaggle Dataset (Raw Data)
+├── results.jsonl        # Analysis Results (Output)
 ├── src/
-│   ├── app.py           # Streamlit Web Uygulaması
-│   ├── extractor.py     # Ana Analiz Motoru (Class)
-│   ├── main.py          # Toplu İşleme Scripti (CLI)
-│   ├── inspect_data.py  # Hızlı Test Scripti
-│   └── analyze_insights.py # İstatistik Özeti
-└── README.md            # Dokümantasyon
+│   ├── app.py           # Streamlit Web Application
+│   ├── extractor.py     # Core Analysis Engine (Class)
+│   ├── main.py          # Batch Processing Script (CLI)
+│   ├── inspect_data.py  # Quick Test Script
+│   └── analyze_insights.py # Statistical Summary
+└── README.md            # Documentation
 ```
 
 ---
 
-## ⚠️ Yasal Uyarı
+## ⚠️ Disclaimer
 
-Bu yazılım sadece **eğitim ve araştırma** amaçlıdır. Çıkarılan sonuçlar, bir doktorun görüşünün yerini tutamaz. Tıbbi teşhis veya tedavi amacıyla **KULLANILAMAZ**.
+This software is for **educational and research purposes only**. The results extracted cannot replace a physician's opinion. It **CANNOT** be used for medical diagnosis or treatment decisions.
